@@ -15,9 +15,9 @@ export const AppWelcomeScreen: React.FC<{
 
   if (isExcalidrawPlusSignedUser) {
     headingContent = t("welcomeScreen.app.center_heading_plus")
-      .split(/(Excalidraw\+)/)
+      .split(/(Excalidraw\+|Kroolo\+)/)
       .map((bit, idx) => {
-        if (bit === "Excalidraw+") {
+        if (bit === "Excalidraw+" || bit === "Kroolo+") {
           return (
             <a
               style={{ pointerEvents: POINTER_EVENTS.inheritFromUI }}
@@ -26,7 +26,7 @@ export const AppWelcomeScreen: React.FC<{
               }?utm_source=excalidraw&utm_medium=app&utm_content=welcomeScreenSignedInUser`}
               key={idx}
             >
-              Excalidraw+
+              Kroolo+
             </a>
           );
         }
@@ -38,11 +38,7 @@ export const AppWelcomeScreen: React.FC<{
 
   return (
     <WelcomeScreen>
-      <WelcomeScreen.Hints.MenuHint>
-        {t("welcomeScreen.app.menuHint")}
-      </WelcomeScreen.Hints.MenuHint>
-      <WelcomeScreen.Hints.ToolbarHint />
-      <WelcomeScreen.Hints.HelpHint />
+      {/** Hints removed for a blank canvas without onboarding bubbles **/}
       <WelcomeScreen.Center>
         <WelcomeScreen.Center.Logo />
         <WelcomeScreen.Center.Heading>

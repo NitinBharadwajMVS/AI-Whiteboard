@@ -45,12 +45,14 @@ export const exportToExcalidrawPlus = async (
     serializeAsJSON(elements, appState, files, "database"),
   );
 
-  const blob = new Blob(
-    [encryptedData.iv, new Uint8Array(encryptedData.encryptedBuffer)],
-    {
-      type: MIME_TYPES.binary,
-    },
-  );
+  const blobParts = [
+    encryptedData.iv,
+    new Uint8Array(encryptedData.encryptedBuffer),
+  ] as unknown as BlobPart[];
+
+  const blob = new Blob(blobParts, {
+    type: MIME_TYPES.binary,
+  });
 
   const storageRef = ref(storage, `/migrations/scenes/${id}`);
   await uploadBytes(storageRef, blob, {
@@ -107,7 +109,7 @@ export const ExportToExcalidrawPlus: React.FC<{
           }}
         />
       </div>
-      <h2>Excalidraw+</h2>
+      <h2>Kroolo+</h2>
       <div className="Card-details">
         {t("exportDialog.excalidrawplus_description")}
       </div>

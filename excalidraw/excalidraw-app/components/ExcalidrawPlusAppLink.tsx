@@ -13,7 +13,7 @@ export const ExcalidrawPlusAppLink = () => {
       rel="noopener"
       className="plus-button"
     >
-      Go to Excalidraw+
+      Go to Kroolo+
     </a>
   );
 };
